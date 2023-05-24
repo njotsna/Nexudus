@@ -15,7 +15,7 @@ exports.AddProductPage = class AddProductPage {
 
     }
 
-    //create login function
+    //add product
 
     async addProduct(name, description, price){
 
@@ -31,6 +31,7 @@ exports.AddProductPage = class AddProductPage {
         await this.save_Button.click()
     }
 
+    //delete product
     async deleteProduct(){
         await this.firstIteminList_link.click()
         await this.delete_Button.click()
