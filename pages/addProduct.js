@@ -24,8 +24,10 @@ exports.AddProductPage = class AddProductPage {
         await this.productName_field.fill(name)
         await this.productDescription_field.click()
         await this.productDescription_field.fill(description)
+        await this.productPrice_field.click()
         await this.productPrice_field.fill(price)
         await this.productPosition_field.fill('1')
+        await this.productDescription_field.click()
         await this.save_Button.click()
     }
 
