@@ -11,10 +11,10 @@ exports.AddProductPage = class AddProductPage {
         this.save_Button = page.getByRole('button', { name: 'Save changes' })
         this.delete_Button = page.getByRole('button', { name: 'Delete' })
         this.confirmation_popup = page.getByRole('button', { name: 'Yes, do it' })
-        this.firstIteminList_link = page.getByRole('link', { name: '1st product Kalkio Space - East Side' })
+        this.firstIteminList_link = page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })
 
     }
-
+    
     //add product
 
     async addProduct(name, description, price){

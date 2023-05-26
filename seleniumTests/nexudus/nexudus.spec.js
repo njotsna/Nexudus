@@ -36,23 +36,44 @@ test('Add and delete a product from the products list', async ({page}) => {
     const Login = new LoginPage(page)
     const AddProduct = new AddProductPage(page)
     
+    
     // navigate to billing product page
     await Login.goToBillingPage()
     
     //enter valid username and password
     await Login.login('adrian+1004930927@nexudus.com','i0i1lgVD8OK8')
+
+    if (await page.isVisible('link', { name: '@2nd Product Kalkio Space - East Side' })){
+ 
+                //clcik on delete 1 record
+                await AddProduct.deleteProduct()
+
+                //verify product removed
+                await expect(page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })).toHaveCount(0);
+        
+               //add product button
+               await AddProduct.addProduct('@2nd Product', 'adding 1st AddProduct', '100')
+        
+               //verify newly adding item is 1st in the list
+               await expect(page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })).toHaveCount(1);
+        
+               //clcik on delete 1 record
+               await AddProduct.deleteProduct()
+        
+               //verify product removed
+               await expect(page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })).toHaveCount(0);
+
+    } 
+            //add product button
+            await AddProduct.addProduct('@2nd Product', 'adding 1st AddProduct', '100')
+
+            //verify newly adding item is 1st in the list
+            await expect(page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })).toHaveCount(1);
     
-    //add product button
-    await AddProduct.addProduct('1st Product', 'adding 1st AddProduct', '100')
-
-    //verify newly adding item is 1st in the list
-    await expect(page.getByRole('link', { name: '1st Product Kalkio Space - East Side' })).toHaveCount(1);
-
-    //clcik on delete 1 record
-    await AddProduct.deleteProduct()
-
-    //verify product removed
-    await expect(page.getByRole('link', { name: '1st Product Kalkio Space - East Side' })).toHaveCount(0);
-
+            //clcik on delete 1 record
+            await AddProduct.deleteProduct()
+    
+            //verify product removed
+            await expect(page.getByRole('link', { name: '@2nd Product Kalkio Space - East Side' })).toHaveCount(0);
 
 });
